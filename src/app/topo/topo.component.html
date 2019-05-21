@@ -1,0 +1,30 @@
+<div>
+    <!--AQUI CRIO O ICONE CARRINHO-->
+    <nav class="navbar navbar-light bg-faded">
+        <div class="container">
+            <a class="navbar-brand" routerLink="">
+                <img src="/assets/logo.png" alt="">
+            </a>
+            <a href="#" class="navbar-brand">
+                <img src="/assets/carrinho.png" alt="">
+            </a>
+        </div>
+    </nav>
+
+    <div class="menu">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <!--RouterLinkActive ira aplicar uma classe no rota ativa-->
+                    <a class="nav-link" routerLinkActive="active" routerLink="/restaurantes">Restaurante</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" routerLinkActive="active" [routerLink]="['/diversao']">Diversao</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="banner">
+    <img src="../../assets/banners/img_1.jpg">
+</div>
