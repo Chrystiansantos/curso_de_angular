@@ -44,10 +44,18 @@ export class OfertasService {
                 return resp.shift();
             });
     }
+    //busca como usar a oferta
     public getComoUsarOfertaPorId(id: number): Promise<string> {
         return this.httpCliente.get(`${URL_API}como-usar?id=${id}`).toPromise()
             .then((resp: any) => {
                 return resp[0].descricao;
             })
+    }
+    //busca onde a oferta se encontra
+    public getOndeFicaOfertaPorId(id: number): Promise<string> {
+        return this.httpCliente.get(`${URL_API}onde-fica?id${id}`).toPromise()
+        .then((resp:any) => {
+            return resp.shift().descricao;
+        })
     }
 }
