@@ -1,12 +1,11 @@
 <div class="container">
 
     <div class="oferta" *ngIf="oferta !== undefined">
-
-        <div class="row">
+        <!--<div class="row">
             <div class="col">
-                <h4>{{oferta.desricao_oferta}} - Rodidzio de Mini-hamburguer com opção de entrada.</h4>
+                <h4>{{oferta.titulo}}, {{oferta.descricao_oferta}}</h4>
             </div>
-        </div>
+        </div>-->
         <div class="row">
             <div class="col-md-6">
                 <div class="img_capa">
@@ -24,7 +23,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-center">
-                        <h1>{{oferta.valor}}</h1>
+                        <h1>{{oferta.valor | currency:"BRL":true}}</h1>
                     </div>
                 </div>
                 <div class="row">

@@ -1,13 +1,27 @@
-<div>
+<div class="fixed-topo">
     <!--AQUI CRIO O ICONE CARRINHO-->
     <nav class="navbar navbar-light bg-faded">
         <div class="container">
-            <a class="navbar-brand" routerLink="">
-                <img src="/assets/logo.png" alt="">
-            </a>
-            <a href="#" class="navbar-brand">
-                <img src="/assets/carrinho.png" alt="">
-            </a>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a class="navbar-brand" routerLink="">
+                        <img src="/assets/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" #temoDaPesquisa placeholder="Pesquise por ofertas ..." (keyup)="pesquisa(temoDaPesquisa.value)">
+                    <ul class="list-group" style="position:absolute; z-index: 999;">
+                        <li class="list-group-item" *ngFor="let oferta of ofertas|async">
+                            <a [routerLink]="['/oferta', oferta.id]" routerLinkActive="router-link-active" (click)='limpaPesquisa()'>{{oferta.titulo | descricaoReduzida:15:0 | uppercase}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <a routerLink="/ordem-compra" class="navbar-brand">
+                        <img src="/assets/carrinho.png" alt="">
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 

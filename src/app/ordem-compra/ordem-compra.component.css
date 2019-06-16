@@ -1,0 +1,25 @@
+.ordem-compra {
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
+/*Dessa forma ele sera ira marcar somente se as duas classes forem aplicadas*/
+/*nginvalid => ira verificar se o campo esta valido*/
+/*ngtouched => ira verificar se o campo foi tocado*/
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+select.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+input.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+select.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+.text-monospace {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 5px;
+}

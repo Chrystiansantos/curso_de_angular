@@ -1,11 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //import para utilizar o .toPromise
 import 'rxjs/add/operator/toPromise';
-
+//tenho que importar os operadores para utiliza-los
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/retry';
 import { URL_API } from './app.api';
 
 import { Oferta } from './shared/ofertas.model';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class OfertasService {
@@ -53,9 +56,18 @@ export class OfertasService {
     }
     //busca onde a oferta se encontra
     public getOndeFicaOfertaPorId(id: number): Promise<string> {
-        return this.httpCliente.get(`${URL_API}onde-fica?id${id}`).toPromise()
-        .then((resp:any) => {
-            return resp.shift().descricao;
-        })
+        return this.httpCliente.get(`${URL_API}onde-fica?id=${id}`).toPromise()
+            .then((resp: any) => {
+                return resp.shift().descricao;
+            })
+    }
+
+    public pesquisaOfertas(termo: string): Observable<Oferta[]> {
+        //_like ele ira pesquisa por palavras
+        return this.httpCliente.get(`${URL_API}ofertas?descricao_oferta_like=${termo}`)
+            .retry(10)
+            .map((resposta: any) => {
+                return resposta;
+            });
     }
 }
